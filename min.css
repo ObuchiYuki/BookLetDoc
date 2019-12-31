@@ -15,6 +15,12 @@ body{
     margin: 0;
 }
 
+a {
+    text-decoration: none;
+    color: #4B87E6;
+}
+
+
 /* ======================================================= */
 /* MARK: - Header - */
 header {
@@ -66,12 +72,14 @@ main {
     margin-right: 10px;
 }
 
-main .card-container {
+/* ======================================================= */
+/* MARK: - Card - */
+main .card {
     font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ, Osaka, 'MS PGothic', arial, helvetica, sans-serif;
     border-radius: 3px;
     background-color: white;
-    height: 400px;
     padding: 1px 30px;
+    margin-bottom: 30px;
 }
 
 main .card-title-container {
@@ -86,24 +94,28 @@ main .card-title {
     font-weight: lighter;
 }
 main .title-blue {
+    border-bottom: solid 10px #B2DCFF;
+}
+main .title-red {
+    width: 230px;
     border-bottom: solid 10px #FFC4BC;
 }
 
-
-
+/* ======================================================= */
+/* MARK: - Retest Books - */
 .re-book-container {
     padding: 20px 0;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .re-book-item {
-    margin-right: 40px;
-    width: 360px;
+    margin-right: 45px;
+    width: 380px;
     display: flex;
 }
 
-.re-book-item .re-book-thumb {
+.re-book-thumb {
     border-radius: 2px;
     box-shadow: 0 1px 5px rgba(1 , 1, 1, 0.5);
     width: 168px;
@@ -111,21 +123,88 @@ main .title-blue {
 }
 
 .re-book-item h4 {
+    width: 210px;
     margin: 0px;
     font-size: 20px;
+
 }
 .re-book-item a {
     font-size: 15px;
-    text-decoration: none;
-    color: #4B87E6;
+
 }
 .re-book-item p {
+
+    width: 210px;
     font-size: 12px;
     color: #8A8A8A;
 }
 
 .book-starts {
     width: 80px;
+}
+
+
+/* ======================================================= */
+/* MARK: - Recommended - */
+.rc-book-container {
+    display: flex;
+    margin: 44px 0;
+    justify-content: space-between;
+}
+.rc-book-item {
+    width: 120px;
+    margin-right: 39px;
+}
+
+.rc-book-thumb {
+    width: 100%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+.book-metadata-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.book-metadata-container .book-title {
+    margin: 7px 0;
+    font-size: 13px;
+}
+.book-metadata-container .book-author {
+    text-decoration: none;
+    font-size: 13px;;
+}
+.book-metadata-container .book-stars {
+    margin-top: 5px;
+    width: 70%;
+}
+
+
+.rc-container-separator {
+    border: solid 0.5px #D8D8D8;
+
+}
+/* ======================================================= */
+/* MARK: - Or Common - */
+
+.more-button-container {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+.more-button {
+    background-color: #D7D1B9;
+    width: 180px;
+    height: 32px;
+    border-radius: 200px;
+    font-size: 19px;
+    color: #312F28;
+    text-align: center;
+    line-height: 32px;
+    vertical-align: middle;
+    color: #312F28;
+}
+.more-button:hover {
+    background-color: #B3AE98;
 }
 
 /* ======================================================= */
