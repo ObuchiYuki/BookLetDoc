@@ -1,6 +1,50 @@
 /* ======================================================= */
 /* MARK: - Initirizing - */
 
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
 *,
 *::before,
 *::after {
@@ -28,6 +72,7 @@ header {
     width: 100%;
     height: 50px;
     background-color: #4A473D;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.17);
 }
 
 header .container {
@@ -73,30 +118,31 @@ main {
 }
 
 /* ======================================================= */
-/* MARK: - Card - */
-main .card {
+/* MARK: - Card - */ 
+.card {
     font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ, Osaka, 'MS PGothic', arial, helvetica, sans-serif;
     border-radius: 3px;
     background-color: white;
-    padding: 1px 30px;
+    padding: 20px 30px; 
     margin-bottom: 30px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.17);
 }
 
-main .card-title-container {
+.card-title-container {
     width: 170px;
     height: 44px;
-
 }
 
-main .card-title {
+.card-title {
     width: 170px;
     height: 44px;
+    font-size: 27px;
     font-weight: lighter;
 }
-main .title-blue {
+.title-blue {
     border-bottom: solid 10px #B2DCFF;
 }
-main .title-red {
+.title-red {
     width: 230px;
     border-bottom: solid 10px #FFC4BC;
 }
@@ -108,7 +154,13 @@ main .title-red {
     display: flex;
     justify-content: space-between;
 }
-
+.re-book-matadata {
+    display: flex;
+    flex-direction: column;
+}
+.re-book-matadata > * {
+    margin-top: 6px;
+}
 .re-book-item {
     margin-right: 45px;
     width: 380px;
@@ -133,9 +185,10 @@ main .title-red {
 
 }
 .re-book-item p {
+    line-height: 1.4em;
 
     width: 210px;
-    font-size: 12px;
+    font-size: 13px;
     color: #8A8A8A;
 }
 
@@ -183,6 +236,48 @@ main .title-red {
     border: solid 0.5px #D8D8D8;
 
 }
+
+
+
+/* ======================================================= */
+/* MARK: - Sidebar - */
+.sidebar {
+    min-width: 270px;
+    width: 270px;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.17);
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.sidebar-section {
+    height: 200px;
+    background: red;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.sidebar-title {
+    background-color: #4A473D;
+    width: 80%;
+    height: 24px;
+}
+.sidebar-content {
+    
+    background: blue;
+}
+
+
+/* ======================================================= */
+/* MARK: - Or Common - */
+
+footer {
+    width: 100%;
+    height: 100px;
+    background: #312F28;
+}
 /* ======================================================= */
 /* MARK: - Or Common - */
 
@@ -205,12 +300,4 @@ main .title-red {
 }
 .more-button:hover {
     background-color: #B3AE98;
-}
-
-/* ======================================================= */
-/* MARK: - Sidebar - */
-.sidebar {
-    width: 270px;
-    height: 100px;
-    background-color: white;
 }
