@@ -1,0 +1,74 @@
+/* ======================================================= */
+/* MARK: - Initirizing - */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+    color: #312F28;
+    background: #F3F2EC;
+}
+body{
+    margin: 0;
+}
+
+/* ======================================================= */
+/* MARK: - Header - */
+header {
+    font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ, Osaka, 'MS PGothic', arial, helvetica, sans-serif;
+    width: 100%;
+    height: 50px;
+    background-color: #4A473D;
+}
+
+header .container {
+    margin-left: 40px;
+    margin-right: 40px;
+    display: flex;
+    align-items: flex-end;
+    height: 100%;
+    padding: 10px;
+}
+
+header .header-item {
+    margin-left: 30px;
+}
+
+.logo-container {
+    height: 30px;
+}
+.logo-container img {
+    height: 100%;
+}
+.site-description {
+    font-size: 13px;
+    color: #F3F2EC;
+}
+
+
+/* ======================================================= */
+/* MARK: - Site Container - */
+.site-container {
+    display: flex;
+}
+/* ======================================================= */
+/* MARK: - Main - */
+
+main {
+    width: 100%;
+    background: yellow;
+    padding: 10px;
+}
+main .container {
+    border-radius: 3px;
+    background-color: white;
+    height: 100px;
+}
+
+.sidebar {
+    background: red;
+    width: 10px;
+}
