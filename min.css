@@ -155,19 +155,24 @@ main {
     display: flex;
     justify-content: space-between;
 }
-.re-book-metadata {
-    display: flex;
-    flex-direction: column;
-}
-.re-book-matadata > * {
-    margin-top: 6px;
-}
+
 .re-book-item {
+    width: 46%;
     margin-right: 45px;
     display: flex;
 }
 
+.re-book-metadata {
+    display: flex;
+    width: 38%;
+    flex-direction: column;
+}
+.re-book-metadata > * {
+    margin-top: 6px;
+}
+
 .re-book-thumb {
+    width: 80%;
     border-radius: 2px;
     box-shadow: 0 1px 5px rgba(1 , 1, 1, 0.5);
     margin-right: 20px;
