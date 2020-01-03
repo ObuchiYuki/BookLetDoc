@@ -46,6 +46,8 @@ table {
 	border-spacing: 0;
 }
 
+/* ======================================================= */
+/* MARK: - Default - */
 *,
 *::before,
 *::after {
@@ -54,7 +56,7 @@ table {
 
 html {
     color: #312F28;
-    background: #F3F2EC;
+    background: white;
 }
 body{
     margin: 0;
@@ -65,10 +67,20 @@ a {
     color: #4B87E6;
 }
 
+hr {
+    color: white;
+    background-color: #ddd;
+    height: 2px;
+    border-top: none;
+    border-color: white;
+}
+
 
 /* ======================================================= */
 /* MARK: - Header - */
 header {
+    position: fixed;
+    z-index: 2000;
     font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ, Osaka, 'MS PGothic', arial, helvetica, sans-serif;
     width: 100%;
     height: 50px;
@@ -103,9 +115,12 @@ header .header-item {
 
 /* ======================================================= */
 /* MARK: - Site Container - */
-
+.site-center {
+    display: flex;
+    justify-content: center;
+}
 .site-container {
-    width: 100%;
+    width: fit-content;
     display: flex;
     justify-content: flex-end;
 }
@@ -114,19 +129,32 @@ header .header-item {
     .site-container {
         flex-direction: column;
     }
+    .sidebar {
+        border: none;
+    }
 }
 /* ======================================================= */
 /* MARK: - Main - */
 
 
 main {
-    width: 70%;
+    margin-top: 40px; /*header*/
+    width: 800px;
+    min-width: 800px;
     padding: 20px;
-    margin-right: 10px;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 900px) {
     main {
+        padding: 10px 0;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    main {
+        padding: 10px 0;
+        min-width: 0;
         width: 100%;
     }
 }
@@ -135,80 +163,219 @@ main {
 /* MARK: - Card - */ 
 .card {
     font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ, Osaka, 'MS PGothic', arial, helvetica, sans-serif;
-    border-radius: 3px;
-    background-color: white;
-    padding: 20px 30px; 
-    margin-bottom: 30px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.17);
+    border-bottom: solid rgba(0, 0, 0, 0.1) 1px;
 }
 
-.card-title-container {
-    width: 170px;
-    height: 44px;
+@media screen and (min-width: 100px) {
+    .card {
+        padding: 20px 15px; 
+    }
 }
 
+@media screen and (min-width: 400px) {
+    .card {
+        padding: 20px 20px; 
+    }
+}
+
+@media screen and (min-width: 1100px) {
+    .card {
+        padding: 20px 30px; 
+    }
+}
+.card-titlebar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-title-container span {
+    margin-bottom: 5px;
+}
 .card-title {
-    width: 170px;
-    height: 44px;
+    margin-top: 5px;
+    width: fit-content;
     font-size: 27px;
     font-weight: lighter;
+    position: relative;
 }
-.title-blue {
+.card-title-container span {
+    font-size: 14px;
+    color: rgb(92, 92, 92);
+}
+
+.card-title::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    left: 20px;
+    bottom: -3px;
+    
+    z-index: -100;
+}
+.title-blue::after{
     border-bottom: solid 10px #B2DCFF;
 }
-.title-red {
-    width: 230px;
+
+.title-red::after {
     border-bottom: solid 10px #FFC4BC;
+}
+
+/* ======================================================= */
+/* MARK: - Recommended - */
+.book-container {
+    display: flex;
+    margin: 44px 0;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.book-item {
+    margin: 0 15px;
+    width: 120px;
+}
+@media screen and (min-width: 300px) {
+    .book-item {
+        margin: 0 12px;
+    }
+}
+@media screen and (min-width: 400px) {
+    .book-item {
+        margin: 0 25px;
+    }
+}
+.book-item {
+    margin-bottom: 20px;
+}
+
+.book-thumb {
+    width: 100%;
+    position: relative;
+    perspective: 800px;
+}
+
+.hover-image {
+    width: 100%;
+    position: relative;
+
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    transform-origin: 0 50%;
+    transform-style: preserve-3d;
+    transform: rotateY(0deg);
+    transition: all .3s ease-in-out;
+}
+.hover-image img {
+    width: 100%;
+}
+.book-thumb:hover .hover-image {
+    transform: rotateY(-40deg);
+}
+
+.hover-image::before {
+    content: "読む";
+
+    position: absolute;
+    left: 0; top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+
+    background: rgba(0, 0, 0, 0.2);
+    opacity: 0;
+
+    text-align: center;
+    line-height: 160px;
+    font-size: 25px;
+    color: white;
+    text-shadow:0 0 3px rgba(0, 0, 0, 0.5);
+    
+    transition: all .3s ease-in-out;
+}
+
+.book-thumb:hover .hover-image::before {
+    opacity: 1;
+}
+
+.book-thumb::after {
+    transition: all .3s ease-in-out;
+    text-align: right;
+    position: absolute;
+    left: 0; 
+    top: 0;
+    opacity: 0;
+    background: rgb(255, 254, 252);
+    overflow: hidden;
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+    font-family: serif;
+    font-size: 8px;
+    padding: 7px 10px;
+    line-height: 12px;
+    color: rgb(39, 37, 36);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    height: 100%;
+    z-index: -100;
+}
+
+.book-thumb:hover::after {
+    opacity: 1;
+}
+
+.book-title {
+    color: #312F28;
+    font-weight: bold;
+}
+
+
+.book-metadata-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.book-metadata-container .book-title {
+    margin: 7px 0;
+    font-size: 13px;
+}
+.book-metadata-container .book-author {
+    text-decoration: none;
+    font-size: 13px;;
+}
+.book-metadata-container .book-stars {
+    margin-top: 5px;
+    width: 60%;
+}
+.book-starts-text {
+    color: rgb(240, 176, 0);
+    margin-left: 5px;
+    font-size: 13px;
 }
 
 /* ======================================================= */
 /* MARK: - Retest Books - */
 
 .re-book-container {
-    padding: 20px 0;
+    padding: 20px 0 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
 }
 
 
-@media screen and (min-width: 0px) { 
-    /* Tablet & Mobile */
-    .re-book-item {
-        width: 300px;
-        height: 250px;
-    }    
-    .re-book-thumb {
-        width: 130px;
-    }    
-    .re-book-metadata {
-        width: 150px;
-    }
+/* Fullscreen */
+.re-book-item {
+    width: 330px;
+    height: 260px;
+}    
+.re-book-thumb {
+    width: 140px;
 }
+.re-book-metadata {
+    width: 180px;
 
-@media screen and (min-width: 1171px) { 
-    /* Fullscreen */
-    .re-book-item {
-        width: 360px;
-        height: 300px;
-    }    
-    .re-book-thumb {
-        width: 150px;
-    }
-    .re-book-metadata {
-        width: 190px;
-    }
 }
 
 .re-book-item {
     display: flex;
-    margin-bottom: 20px;
-    justify-content: space-between;
-}
 
-.re-book-thumb {
-    border-radius: 2px;
-    box-shadow: 0 1px 5px rgba(1 , 1, 1, 0.5);
+    justify-content: space-between;
 }
 
 .re-book-metadata {
@@ -234,7 +401,7 @@ main {
 .re-book-item p {
     margin-top: 15px;
     line-height: 1.4em;
-
+    height: 160px;
     font-size: 13px;
     color: #8A8A8A;
     width: 100%;
@@ -243,64 +410,15 @@ main {
 
 
 
-
-/* ======================================================= */
-/* MARK: - Recommended - */
-.rc-book-container {
-    display: flex;
-    margin: 44px 0;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-.rc-book-item {
-    width: 120px;
-    margin-bottom: 20px;
-}
-
-.rc-book-thumb {
-    width: 100%;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-}
-
-.book-title {
-    font-weight: bold;
-}
-.rc-container-separator {
-    border: solid 0.5px #D8D8D8;
-
-}
-
-
-
-.book-metadata-container{
-    display: flex;
-    flex-direction: column;
-}
-
-.book-metadata-container .book-title {
-    margin: 7px 0;
-    font-size: 13px;
-}
-.book-metadata-container .book-author {
-    text-decoration: none;
-    font-size: 13px;;
-}
-.book-metadata-container .book-stars {
-    margin-top: 5px;
-    width: 70%;
-}
-
-
-
 /* ======================================================= */
 /* MARK: - Sidebar - */
 .sidebar {
+    padding-top: 70px;
     min-width: 230px;
-    background-color: white;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.17);
+    background-color: rgb(243, 243, 243);
+    border-left: solid rgba(0, 0, 0, 0.1) 1px;
     display: flex;
     flex-direction: column;
-    padding-top: 20px;
 }
 
 .sidebar-section {
@@ -311,16 +429,24 @@ main {
     margin-bottom: 32px;
 }
 
+.sidebar-title-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding-left: 12px;
+    align-items: center;
+    border-bottom: solid #979680 2px;
+}
 .sidebar-title {
-    background-color: #4A473D;
-    width: 90%;
-    height: 24px;
-    margin-bottom: 24px;
-    border-radius: 2px;
-    color: white;
+    font-size: 20px;
+    height: fit-content;
     text-align: center;
-    line-height: 24px;
-    font-weight: lighter;
+}
+.sidebar-title-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 12px;
+
 }
 .sidebar-content {
     width: 90%;
@@ -339,23 +465,57 @@ footer {
 /* ======================================================= */
 /* MARK: - Or Common - */
 
-.more-button-container {
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: flex-end;
-}
-.more-button {
-    background-color: #D7D1B9;
-    width: 180px;
-    height: 32px;
-    border-radius: 200px;
-    font-size: 19px;
-    color: #312F28;
-    text-align: center;
-    line-height: 32px;
-    vertical-align: middle;
-    color: #312F28;
-}
-.more-button:hover {
-    background-color: #B3AE98;
+
+@media screen and (min-width: 400px) { 
+    .more-button-container {
+        display: flex;
+        justify-content: flex-end;
+    }
+    .more-button {
+        position: relative;
+        border: solid #B3AE98 1px;
+        transition: all .2s ease-in-out;
+        background-color: #D7D1B9;
+        width: 180px;
+        height: 38px;
+        border-radius: 200px;
+        font-size: 19px;
+        color: rgb(71, 69, 59);
+        text-align: center;
+        line-height: 38px;
+        vertical-align: middle;
+    }
+    .more-button::after {
+        border-bottom-color: rgb(41, 60, 111);
+        border-bottom-style: none;
+        border-bottom-width: 0px;
+        border-image-outset: 0px;
+        border-image-repeat: stretch;
+        border-image-slice: 100%;
+        border-image-source: none;
+        border-image-width: 1;
+        border-left-color: #312F28;
+        border-left-style: none;
+        border-left-width: 0px;
+        border-right-color: #312F28;
+        border-right-style: solid;
+        border-right-width: 2px;
+        border-top-color: #312F28;
+        border-top-style: solid;
+        border-top-width: 2px;
+        box-sizing: border-box;
+        content: "";
+        display: block;
+        height: 7px;
+        position: absolute;
+        right: 10px;
+        top: 16px;
+        transform: matrix(0.7071067811865476, 0.7071067811865475, -0.7071067811865475, 0.7071067811865476, 0, 0);
+        width: 7px;
+        
+    }
+    .more-button:hover {
+        background-color: #B3AE98;
+    }
+
 }
